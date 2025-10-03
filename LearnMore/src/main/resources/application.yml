@@ -1,0 +1,20 @@
+server:
+  port: 8081
+  contextPath: learnmore/dasdboard/api
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: demo_kafka
+      auto-offset-reset: earliest       # đọc từ đầu nếu chưa có offset
+      enable-auto-commit: true         # để mình tự commit offset
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all                         # để đảm bảo at-least-once
+  datasource:
+    url: jdbc:postgresql://localhost:5432/LearnMoreDB
+    username: postgres
+    password: tienngv@2000
